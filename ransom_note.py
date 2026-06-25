@@ -1,13 +1,13 @@
 def can_construct(ransomNote: str, magazine: str) -> bool:
-    """
-    Determines if ransomNote can be constructed using letters from magazine.
-    Each letter in magazine can only be used once.
+    letter_counts = {}
 
-    Parameters:
-        ransomNote (str): The target string to construct.
-        magazine (str): The source string with available characters.
+    for char in magazine:
+        letter_counts[char] = letter_counts.get(char, 0) + 1
 
-    Returns:
-        bool: True if ransomNote can be constructed, False otherwise.
-    """
-    pass  # TODO: Implement this function
+    for char in ransomNote:
+        if letter_counts.get(char, 0) == 0:
+            return False
+
+        letter_counts[char] -= 1
+
+    return True
