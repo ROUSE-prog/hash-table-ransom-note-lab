@@ -1,89 +1,92 @@
-# Lab: Hash Tables – Ransom Note Construction  
-**Lab GitHub Repo**: [Hash Tables – Ransom Note](https://github.com/learn-co-curriculum/hash-table-ransom-note-lab)
-
----
+# Hash Tables – Ransom Note Lab
 
 ## Overview
-In this lab, you’ll apply **hash tables** to solve a classic technical challenge. You’ll implement a function that determines whether a **ransom note** can be constructed using the letters from a given **magazine**—with each letter only used once.
 
-This is a realistic application of **frequency counting** and **fast lookup** using key-value data structures. Hash tables are essential in real-world systems where performance matters, such as caching, text indexing, or validating data availability.
+This project demonstrates how to solve the classic **Ransom Note** problem using a **hash table (Python dictionary)**. The goal is to determine whether a ransom note can be constructed using the characters from a magazine, where each character may only be used once.
 
----
-
-## Task 1: Define the Problem
-
-1. Implement a function that returns `True` if a `ransomNote` can be built using letters from `magazine`, and `False` otherwise.
-2. Each letter in `magazine` may only be used **once**.
-3. You must use a **hash table (dictionary)** to track character counts.
-
-**The Challenge**: Demonstrate your ability to use a hash table for character tracking and conditional logic to support a frequency-matching use case.
+This lab reinforces the use of hash tables for efficient frequency counting and constant-time lookups.
 
 ---
 
-## Task 2: Determine the Design
+## Features
 
-### Hash Table Functionality
-
-- **File**: `ransom_note.py`
-- **Function**:  
-  - `can_construct(ransomNote: str, magazine: str) -> bool`  
-  - Returns `True` if the ransom note can be formed from magazine letters, `False` otherwise.
-
----
-
-## Task 3: Develop, Test, and Refine the Code
-
-### Set Up
-
-#### Fork and Clone
-1. Go to the provided **GitHub repository link**.  
-2. Fork the repository to your GitHub account.  
-3. Clone the forked repository to your local machine.
-
-#### Open and Run
-1. Open the project in your Python-friendly IDE (VSCode, PyCharm, etc.).  
-
-### Implementation Details
-
-1. **Starter code uses `pass`**:
-   - You’ll see `pass` in the `can_construct` function.
-   - Replace it with your actual logic.
-
-2. **Build the function**:
-   - Track letter counts using a dictionary.
-   - Decrement counts as you check the ransom note.
-   - Return `False` early if a character is missing or depleted.
-
-3. **Run Tests**:
-   - Execute the test file with:
-     ```bash
-     python test_ransom_note.py
-     ```
-   - Ensure all tests pass before submission.
-
-4. **Push and Merge**:
-   - Commit your work regularly.
-   - Push to your feature branch.
-   - Open a Pull Request (PR).
-   - Merge to `main` after review.
+* Implements the `can_construct()` function
+* Uses a Python dictionary (hash table) to count character frequencies
+* Decrements counts as characters are used
+* Returns early when a required character is unavailable
+* Handles repeated characters and longer input strings
+* Passes all provided unit tests
 
 ---
 
-## Task 4: Document and Maintain
+## Project Structure
 
-### Best Practice Documentation Steps
-
-- **Comment your logic**: Especially around the hash table operations.
-- **Explain your thinking** in your function definitions.
-- **README**: Ensure this file accurately reflects how to run the project.
-- **Clean Up**:
-  - Remove any debug prints.
-  - Make sure `.gitignore` ignores `.pyc`, `__pycache__`, etc.
+```
+.
+├── ransom_note.py          # Solution implementation
+├── test_ransom_note.py     # Unit tests
+└── README.md               # Project documentation
+```
 
 ---
 
-## Submission
-Once your lab is complete and all tests are passing:
+## How It Works
 
-- Push your code to GitHub.
-- Submit the link to your repo through **Canvas using CodeGrade**.
+1. Count every character in the `magazine` string using a dictionary.
+2. Iterate through each character in the `ransomNote`.
+3. If a character is unavailable or has already been used, return `False`.
+4. Otherwise, decrement its count.
+5. Return `True` after successfully matching every character.
+
+This approach runs in **O(n + m)** time, where:
+
+* **n** = length of the magazine
+* **m** = length of the ransom note
+
+The algorithm uses **O(n)** additional space for the hash table.
+
+---
+
+## Example
+
+```python
+from ransom_note import can_construct
+
+print(can_construct("aa", "aab"))
+# True
+
+print(can_construct("aa", "ab"))
+# False
+```
+
+---
+
+## Running the Tests
+
+Execute the test suite with:
+
+```bash
+python test_ransom_note.py
+```
+
+If everything is working correctly, all tests will pass successfully.
+
+---
+
+## Technologies Used
+
+* Python 3
+* Dictionaries (Hash Tables)
+* Unit Testing
+
+---
+
+## Concepts Practiced
+
+* Hash Tables
+* Dictionaries
+* Frequency Counting
+* Conditional Logic
+* Algorithm Design
+* Time and Space Complexity Analysis
+
